@@ -1,0 +1,68 @@
+<?php
+declare(strict_types=1);
+?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      
+    <title>PHP Test</title>
+  </head>
+  <body>
+    <hr><h1 class="bg-light text-center"> Least Common Multiple</h1> <hr>
+<div class="container">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Number 1</h5>
+        <form method="get" action="regform">
+        <p class="card-text"><b>Input here</b></p>
+        <input type="number" class="form-control" id="number1" placeholder="0" name="number1">
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Number 2</h5>
+        <p class="card-text"><b>Input here</b></p>
+        <input type="number" class="form-control" id="number2" placeholder="0" name="number2">
+      </div>
+    </div>
+  </div>
+</div><br>
+  <input type="submit" value="Find LCM" id="findLCMbttn" class="btn btn-lg btn-primary"> </form>
+</div>
+      <?php
+  
+  if (isset($_GET['number1']) && isset($_GET['number2'])) {
+    $x = $_GET['number1'];
+    $y = $_GET['number2'];
+
+    if($x == 0 || $y == 0){
+      echo '<div class="container"><div class="bg-danger text-white mt-4 p-3"> Error: Both inputs must have a value greater than 0. </div></div>';
+      return;
+    }
+
+    for($i = 1; $i < ($x+1); $i++) {
+      if ($x%$i == 0 && $y%$i == 0)
+        $factor = $i;
+    }
+
+    $lcm = ($x*$y)/$factor;
+    echo '<div class="container"><div class="bg-primary text-white mt-4 p-3">';
+    echo "The Least Common Multiple of $x and $y is: $lcm"; ;
+    echo ' </div> </div>';
+  }
+  
+  ?>
+  
+
+    <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script> 
+  </body>
+</html>
